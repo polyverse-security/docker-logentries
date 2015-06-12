@@ -109,7 +109,10 @@ function cli() {
       'statstoken': 'k',
       'secure': 's',
       'json': 'j',
-      'add': 'a'
+      'add': 'a',
+      'host': 'H',
+      'port': 'P',
+      'protocol': 'R'
     },
     default: {
       json: false,
@@ -124,7 +127,11 @@ function cli() {
                 '                         [-t TOKEN] [--secure] [--json]\n' +
                 '                         [--no-stats] [--no-logs] [-a KEY=VALUE]\n' +
                 '                         [--matchByImage REGEXP] [--matchByName REGEXP]\n' +
-                '                         [--skipByImage REGEXP] [--skipByName REGEXP]');
+                '                         [--skipByImage REGEXP] [--skipByName REGEXP]\n' +
+                '                         [--host DOCKER_HOST]\n' +
+                '                         [--port DOCKER_PORT]\n' +
+                '                         [--protocol DOCKER_PROTOCOL]\n'
+                );
 
     process.exit(1);
   }
@@ -139,6 +146,12 @@ function cli() {
     return acc
   }, {});
 
+  argv.docker = {
+      'host': argv.host,
+      'port': argv.port,
+      'protocol': argv.protocol
+  };
+  console.log(argv);
   start(argv);
 }
 

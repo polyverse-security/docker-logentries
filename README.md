@@ -8,6 +8,12 @@ See the Logentries community pack at [http://revelops.com/community/packs/docker
 
 ## Usage as a Container
 
+To use with Docker listening on TCP port:
+
+```sh
+docker run --rm  polyverse/docker-logentries -t 2ab680b7-1492-4233-ba61-48c76fd0e699 -H 192.168.99.100 -P 2376 --protocol tcp -j -a host=`uname -n`
+```
+
 The simplest way to forward all your container's log to LogEntries is to
 run this repository as a container, with:
 
